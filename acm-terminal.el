@@ -265,7 +265,7 @@ See `popon-create' for more information."
         ;; Update item index.
         (setq item-index (1+ item-index))))))
 
-(defun acm-terminal-markdown-render-content (orig-fn)
+(defun acm-terminal-markdown-render-content (orig-fn &rest args)
   (cl-letf* ((orig-face-attribute (symbol-function #'face-attribute))
              ((symbol-function #'face-attribute)
               (lambda (face attribute &optional frame inherit)
@@ -274,7 +274,7 @@ See `popon-create' for more information."
                          (eq attribute :background))
                     (acm-terminal-default-background)
                   (funcall orig-face-attribute face attribute nil inherit)))))
-    (funcall orig-fn)))
+    (funcall orig-fn args)))
 
 (defun acm-terminal-doc-render (doc &optional width)
   "Render DOC string."
