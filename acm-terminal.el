@@ -76,6 +76,7 @@
 (defvar acm-terminal-annotation-icons
   '(("Function" . " 󰡱 ")
     ("Keyword" . "  ")
+    ("Special Form" . "  ")
     ("Module" . "  ")
     ("Method" . "  ")
     ("Struct" . "  ")
@@ -215,7 +216,6 @@ See `popon-create' for more information."
        (- (window-width)
           (+ (- (car (window-inside-edges)) (window-left-column))
              (acm-terminal-line-number-display-width)))))
-
 (defun acm-terminal-menu-item-icon-text (annotation)
   "Returns icon text for given annotation."
   (cdr (assoc annotation acm-terminal-annotation-icons)))
